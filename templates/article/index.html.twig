@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <h1 class="text-center mb-5">Articles</h1>
+            <div class="row">
+                {% for article in articles %}
+                <div class="col-lg-6">
+                    <h2 class="col-lg-12 text-center">
+                        {{ article.title }}
+                    </h2>
+                    <small class="col-lg-12 text-center mb-5 font-weight-light font-italic">
+                        {{ article.Category.name }}
+                    </small>
+                    <div class="col-lg-12 mb-3 text-justify">
+                        {{ article.content }}
+                    </div>
+                    <div class="col-lg-12">
+                        <a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-outline-dark" role="button">Voir <i class="fas fa-eye"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
